@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WiFi Coffee Shop</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5eee6;
+            color: #3e2723;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .coffee {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #6d4c41;
+        }
+
+        .button {
+            display: block;
+            text-decoration: none;
+            padding: 14px;
+            margin-top: 12px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        .review {
+            background: #6d4c41;
+            color: white;
+        }
+
+        .wifi {
+            background: #eee0d0;
+            color: #3e2723;
+        }
+
+        #password {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5eee6;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="coffee">☕</div>
+
+        <h1>Welcome!</h1>
+
+        <p>
+            Terima kasih sudah mampir ke coffee shop kami ❤️
+            <br>
+            Nikmati kopi kamu sambil menggunakan WiFi gratis.
+        </p>
+
+        <a
+            href="LINK_GOOGLE_MAPS_KAMU"
+            target="_blank"
+            class="button review">
+            ⭐ Review Kami di Google Maps
+        </a>
+
+        <a
+            href="#"
+            class="button wifi"
+            onclick="showPassword()">
+            📶 Dapatkan Password WiFi
+        </a>
+
+        <div id="password">
+            Password WiFi:<br>
+            <strong>KOPIKITA2026</strong>
+        </div>
+
+    </div>
+
+    <script>
+        function showPassword() {
+            document.getElementById("password").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

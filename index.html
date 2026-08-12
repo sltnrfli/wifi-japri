@@ -1,10 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>WiFi Coffee Shop</title>
+    <title>Free WiFi - Coffee Shop</title>
 
     <style>
         * {
@@ -19,42 +20,53 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
             background: #f5eee6;
             color: #3e2723;
         }
 
         .card {
-            width: 90%;
+            width: 100%;
             max-width: 400px;
             background: white;
             padding: 35px 25px;
-            border-radius: 20px;
+            border-radius: 24px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
         }
 
         .coffee {
-            font-size: 60px;
+            font-size: 65px;
             margin-bottom: 15px;
         }
 
         h1 {
+            font-size: 28px;
             margin-bottom: 10px;
         }
 
-        p {
+        .subtitle {
             line-height: 1.6;
-            margin-bottom: 20px;
             color: #6d4c41;
+            margin-bottom: 25px;
         }
 
         .button {
+            width: 100%;
             display: block;
+            border: none;
             text-decoration: none;
-            padding: 14px;
+            padding: 15px;
             margin-top: 12px;
-            border-radius: 12px;
+            border-radius: 13px;
+            font-size: 15px;
             font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .button:active {
+            transform: scale(0.98);
         }
 
         .review {
@@ -62,18 +74,62 @@
             color: white;
         }
 
-        .wifi {
-            background: #eee0d0;
-            color: #3e2723;
+        .review:hover {
+            background: #5d4037;
         }
 
-        #password {
+        .confirm {
+            background: #eee0d0;
+            color: #3e2723;
+            display: none;
+        }
+
+        .confirm:hover {
+            background: #e5d3c0;
+        }
+
+        .wifi {
+            background: #3e2723;
+            color: white;
+            display: none;
+        }
+
+        .wifi:hover {
+            background: #2d1b18;
+        }
+
+        .password-box {
             display: none;
             margin-top: 20px;
-            padding: 15px;
+            padding: 20px;
             background: #f5eee6;
-            border-radius: 12px;
+            border-radius: 15px;
+        }
+
+        .password-title {
+            font-size: 14px;
+            color: #6d4c41;
+            margin-bottom: 8px;
+        }
+
+        .password {
+            font-size: 22px;
             font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .note {
+            margin-top: 20px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #8d6e63;
+        }
+
+        .success {
+            margin-top: 15px;
+            color: #5d4037;
+            font-size: 14px;
+            display: none;
         }
     </style>
 </head>
@@ -86,38 +142,105 @@
 
         <h1>Welcome!</h1>
 
-        <p>
+        <p class="subtitle">
             Terima kasih sudah mampir ke coffee shop kami ❤️
-            <br>
-            Nikmati kopi kamu sambil menggunakan WiFi gratis.
+            <br><br>
+            Nikmati kopi kamu sambil terhubung dengan WiFi gratis kami.
         </p>
 
+        <!-- TOMBOL REVIEW -->
         <a
             href="https://maps.app.goo.gl/6tnWwwCHVhPr5dF9A?g_st=ic"
             target="_blank"
-            class="button review">
+            class="button review"
+            onclick="openReview()">
             ⭐ Review Kami di Google Maps
         </a>
 
-        <a
-            href="#"
+        <!-- TOMBOL KONFIRMASI -->
+        <button
+            id="confirmButton"
+            class="button confirm"
+            onclick="confirmReview()">
+            ✅ Saya Sudah Memberikan Review
+        </button>
+
+        <!-- TOMBOL PASSWORD -->
+        <button
+            id="wifiButton"
             class="button wifi"
             onclick="showPassword()">
-            📶 Dapatkan Password WiFi
-        </a>
+            📶 Lihat Password WiFi
+        </button>
 
-        <div id="password">
-            Password WiFi:<br>
-            <strong>kopibudayamembaca</strong>
+        <!-- PESAN SUKSES -->
+        <div id="successMessage" class="success">
+            Terima kasih sudah memberikan feedback! ❤️
         </div>
+
+        <!-- PASSWORD -->
+        <div id="passwordBox" class="password-box">
+
+            <div class="password-title">
+                Password WiFi
+            </div>
+
+            <div class="password">
+                kopibudayamembaca
+            </div>
+
+        </div>
+
+        <p class="note">
+            Mohon berikan review dan feedback secara jujur.
+            Terima kasih sudah mendukung coffee shop kami ☕
+        </p>
 
     </div>
 
+
     <script>
-        function showPassword() {
-            document.getElementById("password").style.display = "block";
+
+        // Setelah pelanggan menekan tombol Google Maps,
+        // tombol konfirmasi akan muncul.
+
+        function openReview() {
+
+            setTimeout(function() {
+
+                document.getElementById("confirmButton").style.display = "block";
+
+            }, 500);
+
         }
+
+
+        // Setelah pelanggan menyatakan sudah memberikan review,
+        // tombol password akan muncul.
+
+        function confirmReview() {
+
+            document.getElementById("successMessage").style.display = "block";
+
+            document.getElementById("wifiButton").style.display = "block";
+
+            document.getElementById("confirmButton").style.display = "none";
+
+        }
+
+
+        // Menampilkan password WiFi.
+
+        function showPassword() {
+
+            document.getElementById("passwordBox").style.display = "block";
+
+            document.getElementById("wifiButton").style.display = "none";
+
+        }
+
     </script>
 
 </body>
 </html>
+```
